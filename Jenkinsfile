@@ -11,6 +11,7 @@ pipeline {
     environment { 
         appVersion = ''
         account_id = '315069654700'
+        region = 'us-east-1'
     }
 
     //  parameters {
