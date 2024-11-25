@@ -6,6 +6,7 @@ metadata:
 data:
   DB_HOST: expense-dev.czn6yzxlcsiv.us-east-1.rds.amazonaws.com
   DB_PWD: ExpenseApp1
+  DB_USER: root
 ---
 apiVersion: apps/v1
 kind: Deployment
