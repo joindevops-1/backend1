@@ -68,51 +68,12 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                sh 'echo This is Test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo This is Deploy'
-            }
-        }
-        stage("print params"){
-            when {
-                not {
-                    branch 'main'
-                }
-                environment name: 'DEPLOY_TO', value: 'non-production'
-            }
+        stage('Deploy'){
             steps{
-                sh 'echo This is Deploy'  
-            }
-        }
-        stage('Example') {
-            steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-            }
-        }
-        stage('Example Input') {
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
-            }
-            steps {
-                echo "Hello, ${PERSON}, nice to meet you."
+                sh """
+                    aws eks uodate-kubeconfig --region ${region} --name expense-dev
+                    kubectl get nodes
+                """
             }
         }
     }
