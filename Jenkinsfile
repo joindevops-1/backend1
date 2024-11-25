@@ -63,7 +63,7 @@ pipeline {
 
                         docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/expense/backend:${appVersion} .
 
-                        docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/backend:${appVersion}
+                        docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/expense/backend:${appVersion}
                     """
                 }
             }
