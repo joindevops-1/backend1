@@ -4,7 +4,7 @@ metadata:
   name: backend
   namespace: expense
 data:
-  DB_HOST: {{ .Values.dev.configMap.DB_HOST }}
+  DB_HOST: {{ .Values.configMap.DB_HOST }}
   DB_PWD: ExpenseApp1
   DB_USER: root
 ---
@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: "{{ .Values.dev.deployment.imageURL }}:{{ .Values.deployment.imageVersion }}"
+        image: "{{ .Values.deployment.imageURL }}:{{ .Values.deployment.imageVersion }}"
         resources:
           requests:
             cpu: 100m
