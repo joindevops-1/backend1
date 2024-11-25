@@ -70,10 +70,12 @@ pipeline {
         }
         stage('Deploy'){
             steps{
+                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                 sh """
                     aws eks update-kubeconfig --region ${region} --name expense-dev
                     kubectl get nodes
                 """
+                }
             }
         }
     }
