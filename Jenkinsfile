@@ -16,18 +16,6 @@ pipeline {
         project = 'expense'
         component = 'backend'
     }
-
-    //  parameters {
-    //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-
-    //     text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-    //     booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-    //     choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-    //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    // }
     
     stages {
         stage('Read Version') {
@@ -73,28 +61,15 @@ pipeline {
         stage('Deploy'){
             steps{
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
-                script{
-                    releaseExists = sh(script: "helm list -A --short | grep -w ${component} || true", returnStdout: true).trim()
-                        if(releaseExists.isEmpty()){
-                            echo "${component} not installed yet, first time installation"
-                            sh"""
-                                aws eks update-kubeconfig --region ${region} --name ${project}-dev
-                               
-                                cd helm
-                                sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
-                                helm install ${component} -n ${project} .
-                            """
-                        }
-                        else{
-                            echo "${component} exists, running upgrade"
-                            sh"""
-                                aws eks update-kubeconfig --region ${region} --name ${project}-dev
-                                cd helm
-                                sed -i 's/IMAGE_VERSION/${appVersion}/g' values-${environment}.yaml
-                                helm upgrade ${component} -n ${project} -f values-${environment}.yaml .
-                            """
-                        }
-                }
+                    script{               
+                        echo "${component} not installed yet, first time installation"
+                        sh"""
+                            aws eks update-kubeconfig --region ${region} --name ${project}-${environment}
+                            cd helm
+                            sed -i 's/IMAGE_VERSION/${appVersion}/g' values-${environment}.yaml
+                            helm upgrade --install ${component} -n ${project} -f values-${environment}.yaml .
+                        """
+                    }
                 }
             }
         }
