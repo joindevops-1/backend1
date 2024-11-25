@@ -61,9 +61,9 @@ pipeline {
                     sh """
                         aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
 
-                        docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/expense/backend:${appVersion} .
+                        docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/backend:${appVersion} .
 
-                        docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/expense/backend:${appVersion}
+                        docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense/${environment}/backend:${appVersion}
                     """
                 }
             }
