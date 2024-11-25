@@ -79,7 +79,7 @@ pipeline {
                             echo "${component} not installed yet, first time installation"
                             sh"""
                                 aws eks update-kubeconfig --region ${region} --name ${project}-dev
-                                kubectl create namespace expense
+                               
                                 cd helm
                                 sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
                                 helm install ${component} -n ${project} .
