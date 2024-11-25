@@ -4,7 +4,8 @@ metadata:
   name: backend
   namespace: expense
 data:
-  DB_HOST: mysql
+  DB_HOST: expense-dev.czn6yzxlcsiv.us-east-1.rds.amazonaws.com
+  DB_PWD: ExpenseApp1
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -31,7 +32,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: joindevops/backend:{{ .Values.deployment.imageVersion }}
+        image: 315069654700.dkr.ecr.us-east-1.amazonaws.com/expense/dev/backend:{{ .Values.deployment.imageVersion }}
         resources:
           requests:
             cpu: 100m
