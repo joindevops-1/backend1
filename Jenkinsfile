@@ -71,7 +71,7 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh """
-                    aws eks uodate-kubeconfig --region ${region} --name expense-dev
+                    aws eks update-kubeconfig --region ${region} --name expense-dev
                     kubectl get nodes
                 """
             }
