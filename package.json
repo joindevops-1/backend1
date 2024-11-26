@@ -18,7 +18,7 @@
     "moment" : "latest"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
+    "jest": "latest",
     "jest-sonar-reporter": "latest",
     "jest-junit": "latest"
   },
