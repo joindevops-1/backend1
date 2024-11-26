@@ -24,6 +24,10 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text"
+    ],
     "reporters": [
       "default",
       ["jest-junit", {
