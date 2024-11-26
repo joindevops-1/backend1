@@ -30,6 +30,10 @@
     ],
     "reporters": [
       "default",
+      ["jest-sonar-reporter", {
+        
+        "outputName": "test-report.xml"
+      }],
       ["jest-junit", {
         "output": "junit.xml",
         "usePathForSuiteName": "true"
