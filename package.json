@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --coverageDirectory=output/coverage/jest"
   },
   "keywords": [],
   "author": "",
@@ -19,13 +19,24 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-sonar-reporter": "^1.0.0"
+    "jest-sonar-reporter": "^1.0.0",
+    "jest-junit": "latest"
   },
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": ["lcov", "lcovonly", "text-summary"],
-    "coverageDirectory": "coverage",
-    "testResultsProcessor": "jest-sonar-reporter"
+    "coverageReporters": [
+      "text"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    
+    
+    "jest-junit": {
+      "output": "output/coverage/junit/junit.xml",
+      "usePathForSuiteName": "true"
+    }
   }
 }
