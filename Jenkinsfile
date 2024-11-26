@@ -49,7 +49,7 @@ pipeline {
                 sh """
                 npm test
                 ls -ltr
-                cat     test-report.xml
+                
                 cat junit.xml
                 """
             }
