@@ -7,7 +7,7 @@ def configMap = [
     component: "backend",
     project: "expense"
 ]
-
+sh 'env'
 if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
     pipelineDecission.decidePipeline(configMap)
 }
