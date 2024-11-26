@@ -7,7 +7,7 @@ def configMap = [
     component: "backend",
     project: "expense"
 ]
-sh 'env'
+echo "test:"
 if( ! env.BRANCH_NAME.equalsIgnoreCase('main')){
     pipelineDecission.decidePipeline(configMap)
 }
