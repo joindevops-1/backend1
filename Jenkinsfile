@@ -49,6 +49,7 @@ pipeline {
                 sh """
                 npm test
                 ls -ltr coverage
+                cat coverage/lcov-report/lcov-report.json
                 npx jest --coverage
                 """
             }
