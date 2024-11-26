@@ -1,4 +1,4 @@
-const db = require('./yourDbFile'); // Replace with your file's name
+const db = require('../TransactionService'); // Replace with your file's name
 const { mockQuery } = require('mysql2');
 
 describe('Database Function Tests', () => {
