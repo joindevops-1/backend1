@@ -33,12 +33,13 @@
       ["jest-sonar-reporter", {
         "outputDirectory": "coverage", 
         "outputName": "test-report.xml"
+      }],
+      ["jest-junit", {
+        "output": "coverage/junit.xml",
+        "usePathForSuiteName": "true"
       }]
     ],
-    "jest-junit": {
-      "output": "junit.xml",
-      "usePathForSuiteName": "true"
-    },
+    
     "testResultsProcessor": "jest-sonar-reporter"
   }
 }
