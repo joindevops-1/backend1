@@ -48,7 +48,8 @@ pipeline {
             steps{
                 sh """
                 npm test
-                
+                cat     test-report.xml
+                cat junit.xml
                 """
             }
             post {
