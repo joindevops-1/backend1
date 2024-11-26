@@ -24,26 +24,12 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "text"
-    ],
     "reporters": [
       "default",
-      ["jest-sonar-reporter", {
-        
-        "outputName": "test-report.xml"
-      }],
       ["jest-junit", {
         "output": "junit.xml",
         "usePathForSuiteName": "true"
       }]
-    ],
-    "testResultsProcessor": "jest-sonar-reporter"
-  },
-  "jestSonar": {
-    "reportPath": "reports",
-    "reportFile": "test-reporter.xml",
-    "indent": 4
+    ]
   }
 }

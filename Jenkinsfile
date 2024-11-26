@@ -52,11 +52,11 @@ pipeline {
                 cat junit.xml
                 """
             }
-           /*  post {
+            post {
                 always {
                     junit 'junit.xml'
                 }
-            } */
+            }
         }
         stage('Sonar Scan'){
             environment {
