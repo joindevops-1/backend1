@@ -35,7 +35,6 @@
     "jest-junit": {
       "output": "junit.xml",
       "usePathForSuiteName": "true"
-    },
-    "testResultsProcessor": "jest-sonar-reporter"
+    }
   }
 }
