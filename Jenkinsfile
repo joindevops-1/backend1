@@ -44,6 +44,18 @@ pipeline {
                 """
             }
         }
+        stage('Sonar Scan'){
+            environment {
+                scannerHome = tool 'sonar' //referring scanner CLI
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('sonar') { //referring sonar server
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
         stage('Docker build'){
             
                 steps{
@@ -58,7 +70,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy'){
+        /* stage('Deploy'){
             steps{
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                     script{               
@@ -72,7 +84,7 @@ pipeline {
                     }
                 }
             }
-        }
+        } */
     }
     post { 
         always { 
