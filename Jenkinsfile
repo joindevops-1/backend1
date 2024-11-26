@@ -49,8 +49,7 @@ pipeline {
                 sh """
                 npm test
                 ls -ltr
-                
-                cat junit.xml
+
                 """
             }
             post {
