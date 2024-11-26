@@ -30,7 +30,10 @@
     ],
     "reporters": [
       "default",
-      "jest-junit"
+      ["jest-sonar-reporter", {
+        "outputDirectory": "coverage", 
+        "outputName": "test-report.xml"
+      }]
     ],
     "jest-junit": {
       "output": "junit.xml",
