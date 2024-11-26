@@ -7,6 +7,9 @@ pipeline {
         timeout(time: 10, unit: 'MINUTES') 
         disableConcurrentBuilds()
     }
+    parameters{
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Toggle this value')
+    }
 
     environment { 
         appVersion = ''
@@ -78,8 +81,10 @@ pipeline {
         //     }
         // } 
         stage('Docker build'){
-            
-                steps{
+            when {
+                expression { params.DEPLOY }
+            }
+            steps{
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                     sh """
                         aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
@@ -95,13 +100,10 @@ pipeline {
             steps{
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                     script{               
-                        echo "${component} not installed yet, first time installation"
-                        sh"""
-                            aws eks update-kubeconfig --region ${region} --name ${project}-${environment}
-                            cd helm
-                            sed -i 's/IMAGE_VERSION/${appVersion}/g' values-${environment}.yaml
-                            helm upgrade --install ${component} -n ${project} -f values-${environment}.yaml .
-                        """
+                        build job: 'backend-deploy', parameters: [
+                            string(name: 'ENVIRONMENT', value: "dev"),
+                            string(name: 'VERSION', value: "$appVersion")
+                        ], wait: true
                     }
                 }
             }
