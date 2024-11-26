@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,12 @@
     "express": "^4.17.1",
     "mysql2": "latest",
     "node-fetch": "^2.6.1",
-    "moment" : "latest"
+    "moment" : "latest",
+  },
+  "devDependencies": {
+    "jest": "^29.7.0" // Replace with the latest version if needed
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

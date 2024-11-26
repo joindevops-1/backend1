@@ -44,6 +44,13 @@ pipeline {
                 """
             }
         }
+        stage('Unit Test'){
+            steps{
+                sh """
+                npm test
+                """
+            }
+        }
         stage('Sonar Scan'){
             environment {
                 scannerHome = tool 'sonar' //referring scanner CLI
