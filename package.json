@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-sonar-reporter": "^1.0.0",
+    "jest-sonar-reporter": "latest",
     "jest-junit": "latest"
   },
   "jest": {
@@ -38,6 +38,12 @@
         "output": "junit.xml",
         "usePathForSuiteName": "true"
       }]
-    ]
+    ],
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
   }
 }
