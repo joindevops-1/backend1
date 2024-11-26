@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --coverageDirectory=output/coverage/jest"
+    "test": "jest --coverage "
   },
   "keywords": [],
   "author": "",
@@ -31,7 +31,7 @@
     "reporters": [
       "default",
       ["jest-junit", {
-        "output": "output/coverage/junit/junit.xml",
+        "output": "junit.xml",
         "usePathForSuiteName": "true"
       }]
     ]
