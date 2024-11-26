@@ -51,6 +51,11 @@ pipeline {
                 
                 """
             }
+            post {
+                always {
+                    junit 'output/coverage/junit/junit.xml'
+                }
+            }
         }
         stage('Sonar Scan'){
             environment {
