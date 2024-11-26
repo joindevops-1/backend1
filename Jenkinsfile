@@ -48,6 +48,8 @@ pipeline {
             steps{
                 sh """
                 npm test
+                ls -ltr coverage
+                npx jest --coverage
                 """
             }
         }
