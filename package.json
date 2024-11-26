@@ -24,6 +24,7 @@
     "testEnvironment": "node",
     "collectCoverage": true,
     "coverageReporters": ["lcov", "lcovonly", "text-summary"],
-    "coverageDirectory": "coverage"
+    "coverageDirectory": "coverage",
+    "testResultsProcessor": "jest-sonar-reporter"
   }
 }
