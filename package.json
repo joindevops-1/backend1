@@ -30,13 +30,10 @@
     ],
     "reporters": [
       "default",
-      "jest-junit"
-    ],
-    
-    
-    "jest-junit": {
-      "output": "output/coverage/junit/junit.xml",
-      "usePathForSuiteName": "true"
-    }
+      ["jest-junit", {
+        "output": "output/coverage/junit/junit.xml",
+        "usePathForSuiteName": "true"
+      }]
+    ]
   }
 }
